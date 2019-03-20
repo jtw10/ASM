@@ -13,3 +13,11 @@ page_content = BeautifulSoup(page_response.content, "html.parser")
 
 print(page_content)
 # what's this?! ed sheeran lyrics?
+
+title = page_content.title
+print(title, type(title))
+title = page_content.title.string
+print(title, type(title))
+
+para = page_content.text
+print(para, type(para))
