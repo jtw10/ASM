@@ -1,26 +1,15 @@
+import urllib3
 from bs4 import BeautifulSoup
-import requests
-# importing both Beautiful Soup and the Requests library
 
-page_link = 'https://www.azlyrics.com/lyrics/edsheeran/perfect.html'
-# url that to scrape from.
 
-page_response = requests.get(page_link, timeout=5)
-# fetch the content from the url, using the requests library
+urllib3.disable_warnings()
+http = urllib3.PoolManager()
+response = http.request('GET', 'https://www.cbc.ca/news/business/parents-wireless-charges-phone-1.5077272')
 
-page_content = BeautifulSoup(page_response.content, "html.parser")
-# parse the url content and store it in a variable via "html.parser" arguement
 
-print(page_content)
-# what's this?! ed sheeran lyrics?
+soup = BeautifulSoup(response.data, "html.parser")  # Note the use of the .data property
 
-title = page_content.title
-print(title, type(title))
-title = page_content.title.string
-print(title, type(title))
 
-para = page_content.text
-print(para, type(para))
-
-print('UwU means unhappy without you!')
-print('OwO')
+table = soup.findAll('div', attrs={"class":"story"})
+for x in table:
+    print(x.find('p').text)
