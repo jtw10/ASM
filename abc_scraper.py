@@ -1,16 +1,25 @@
 import bs4 as bs
 import urllib.request
 
-scraped_data = urllib.request.urlopen('https://abcnews.go.com/International/wireStory/thousands-protest-anniversary-brazils-coup-62077492')
-article = scraped_data.read()
+url = 'https://abcnews.go.com/Politics/lori-lightfoot-makes-history-chicagos-african-american-female/story?id=62127007&cid=clicksource_4380645_null_headlines_hed'
+scraped_data = ''
 
-parsed_article = bs.BeautifulSoup(article,'lxml')
+def abc_scraper(url):
+    scraped_data = urllib.request.urlopen(url)
+    scraped_data = urllib.request.urlopen('https://abcnews.go.com/International/wireStory/thousands-protest-anniversary-brazils-coup-62077492')
+    article = scraped_data.read()
 
-paragraphs = parsed_article.find_all('div', class_='StoryBody__main--1VIBe fonts__tiemposTextRegular--1u6HI')
+    parsed_article = bs.BeautifulSoup(article,'lxml')
 
-article_text = ""
+    paragraphs = parsed_article.find_all('div', class_='StoryBody__main--1VIBe fonts__tiemposTextRegular--1u6HI')
 
-for p in paragraphs:
-    article_text += p.text
+    article_text = ""
 
-print(article_text)
+    for p in paragraphs:
+        article_text += p.text
+
+    return article_text
+
+
+fatty = abc_scraper(url)
+print(fatty)
