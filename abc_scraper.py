@@ -1,7 +1,7 @@
 import bs4 as bs
 import urllib.request
 
-url = 'https://abcnews.go.com/Politics/lori-lightfoot-makes-history-chicagos-african-american-female/story?id=62127007&cid=clicksource_4380645_null_headlines_hed'
+url = 'https://abcnews.go.com/International/wireStory/thousands-protest-anniversary-brazils-coup-62077492'
 scraped_data = ''
 
 def abc_scraper(url):
