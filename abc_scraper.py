@@ -6,7 +6,6 @@ scraped_data = ''
 
 def abc_scraper(url):
     scraped_data = urllib.request.urlopen(url)
-    scraped_data = urllib.request.urlopen('https://abcnews.go.com/International/wireStory/thousands-protest-anniversary-brazils-coup-62077492')
     article = scraped_data.read()
 
     parsed_article = bs.BeautifulSoup(article,'lxml')
