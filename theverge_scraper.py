@@ -1,16 +1,31 @@
 import bs4 as bs
 import urllib.request
+import re
 
-scraped_data = urllib.request.urlopen('https://www.theverge.com/2019/3/31/18289518/google-maps-app-snakes-game-april-fools-day')
-article = scraped_data.read()
+url = 'https://www.theverge.com/2019/3/31/18289518/google-maps-app-snakes-game-april-fools-day'
 
-parsed_article = bs.BeautifulSoup(article,'lxml')
+def theverge_scraper(url):
+    scraped_data = urllib.request.urlopen(url)
+    article = scraped_data.read()
 
-paragraphs = parsed_article.find_all('div', class_='c-entry-content')
+    parsed_article = bs.BeautifulSoup(article,'lxml')
 
-article_text = ""
+    paragraphs = parsed_article.find_all('div', class_='c-entry-content')
 
-for p in paragraphs:
-    article_text += p.text
+    article_text = ""
 
-print(article_text)
+    for p in paragraphs:
+        article_text += p.text
+
+    # put unwanted words to be replaced in the dictionary
+    badwords = {'Facebook': '', 'Twitter': '', 'Email': '', 'LinkedIn': '', 'WhatsApp': '', 'Messenger': '', 'Pinterest': '', 'Share via': '', 'Share on': '', 'Read more': ''}
+
+    # this section of code replaces substrings that matches the key with the keyvalue from the dictionary
+    badwords = dict((re.escape(k), v) for k, v in badwords.items())
+    pattern = re.compile("|".join(badwords.keys()))
+    cleaned_text = pattern.sub(lambda m: badwords[re.escape(m.group(0))], article_text)
+
+    return cleaned_text
+
+bigballs = theverge_scraper(url)
+print(bigballs)
