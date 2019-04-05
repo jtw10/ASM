@@ -4,9 +4,13 @@ from spacetest import summary
 
 def displayout():
     article_url = entry.get()
-    content = summary(article_url)
-    output.delete('1.0', tkinter.END)
-    output.insert(tkinter.INSERT, content)
+    try:
+        content = summary(article_url)
+    except ValueError:
+        content = 'Malformed URL! Please enter an actual news article.'
+    finally:
+        output.delete('1.0', tkinter.END)
+        output.insert(tkinter.INSERT, content)
 
 
 master = tkinter.Tk()
