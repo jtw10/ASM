@@ -18,7 +18,7 @@ def findfrequency(document, stopwords):
 
 def summary(url):
     stopwords = list(STOP_WORDS)
-    document1 = nbc_scraper(url)
+    document1 = article_scraper(url)
     nlp = spacy.load("en_core_web_sm")
 
     docx = nlp(document1)
