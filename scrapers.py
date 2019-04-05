@@ -17,7 +17,7 @@ def article_scraper(url):
         article_text += p.text
 
     # put unwanted words to be replaced in the dictionary
-    badwords = {'Facebook': '', 'Twitter': '', 'Email': '', 'LinkedIn': '', 'WhatsApp': '', 'Messenger': '', 'Pinterest': '', 'Share via': '', 'Share on': '', 'Read more': ''}
+    badwords = {'Facebook': '', 'Twitter': '', 'Email': '', 'LinkedIn': '', 'WhatsApp': '', 'Messenger': '', 'Pinterest': '', 'Share via': '', 'Share on': '', 'Read more': '', 'SUBSCRIBE': ''}
 
     # this section of code replaces substrings that matches the key with the keyvalue from the dictionary
     badwords = dict((re.escape(k), v) for k, v in badwords.items())
