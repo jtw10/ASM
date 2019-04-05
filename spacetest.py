@@ -16,6 +16,19 @@ def findfrequency(document, stopwords):
     return word_frequencies
 
 
+def sentencescoring(sentence_list, word_frequencies):
+    sentence_scores = {}
+    for sent in sentence_list:
+        for word in sent:
+            if word.text.lower() in word_frequencies.keys():
+                if len(sent.text.split(' ')) < 30:
+                    if sent not in sentence_scores.keys():
+                        sentence_scores[sent] = word_frequencies[word.text.lower()]
+                    else:
+                        sentence_scores[sent] += word_frequencies[word.text.lower()]
+    return sentence_scores
+
+
 def summary(url):
     stopwords = list(STOP_WORDS)
     document1 = article_scraper(url)
@@ -40,15 +53,7 @@ def summary(url):
     sentence_list = [sentence for sentence in docx.sents]
 
     # sentence score via comparison between words and sentence
-    sentence_scores = {}
-    for sent in sentence_list:
-        for word in sent:
-            if word.text.lower() in word_frequencies.keys():
-                if len(sent.text.split(' ')) < 30:
-                    if sent not in sentence_scores.keys():
-                        sentence_scores[sent] = word_frequencies[word.text.lower()]
-                    else:
-                        sentence_scores[sent] += word_frequencies[word.text.lower()]
+    sentence_scores = sentencescoring(sentence_list, word_frequencies)
 
     # sentence score table
     # print(sentence_scores)

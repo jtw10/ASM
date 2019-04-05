@@ -8,6 +8,8 @@ def displayout():
         content = summary(article_url)
     except ValueError:
         content = 'Malformed URL! Please enter an actual news article.'
+    except TypeError:
+        content = 'Sorry, this news website is not supported at this time.'
     finally:
         output.delete('1.0', tkinter.END)
         output.insert(tkinter.INSERT, content)
