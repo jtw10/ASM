@@ -27,5 +27,5 @@ def ctv_scraper(url):
 
     return cleaned_text
 
-dickballs = ctv_scraper(url)
-print(dickballs)
+text = ctv_scraper(url)
+print(text)

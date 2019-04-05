@@ -27,5 +27,5 @@ def theverge_scraper(url):
 
     return cleaned_text
 
-bigballs = theverge_scraper(url)
-print(bigballs)
+text = theverge_scraper(url)
+print(text)
