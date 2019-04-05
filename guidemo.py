@@ -1,0 +1,28 @@
+import tkinter
+from spacetest import summary
+
+
+def displayout():
+    article_url = entry.get()
+    content = summary(article_url)
+    output.delete('1.0', tkinter.END)
+    output.insert(tkinter.INSERT, content)
+
+
+master = tkinter.Tk()
+master.title("Article Summary Machine")
+
+tkinter.Label(master, text="Article URL: ").grid(row=0)
+entry = tkinter.Entry(master, width="107")
+entry.grid(row=0, column=1)
+
+entry.focus_set()
+
+tkinter.Label(master, text="Summary: ").grid(row=1)
+
+output = tkinter.Text(master)
+output.grid(row=1, column=1)
+
+tkinter.Button(master, text="Summarize!", command=displayout).grid(columnspan=2)
+
+master.mainloop()
