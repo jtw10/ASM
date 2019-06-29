@@ -2,7 +2,7 @@
 This program will use a web scraper to extract news articles from various online news sources and output a short and concise summary. It is written in Python 3 and makes use of beautifulsoup4 (web scraper) and spaCy (open-source natural language processessing library). Our target audience are individuals who are tight on time but still want to keep up with current news. This will hopefully reduce the number of people who are misinfirmed because they only read the title of news article, but not the article itself.
 
 ## Setting Up
-beautifulsoup4: Run `pip install beautifulsoup4` in the command line.
+beautifulsoup4: Run `pip install beautifulsoup4` in the command line.<br>
 spaCy: Run `pip install -U spacy` in the command line.
 
 ## Usage
