@@ -9,9 +9,9 @@ spaCy: Run `pip install -U spacy` in the command line.
 Run guidemo.py, paste the link of the news article you wish to summarize, and select the correct scraper.
 
 ## Authors
-* Aaron Lee ![Github](https://github.com/synghoo)
-* Josh Wong ![Github](https://github.com/jtw10)
-* Ramon Lin ![Github](https://github.com/yuan-g)
+* ![Aaron Lee](https://github.com/synghoo)
+* ![Josh Wong](https://github.com/jtw10)
+* ![Ramon Lin](https://github.com/yuan-g)
 
 ## Sources Used
 
